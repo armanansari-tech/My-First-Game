@@ -277,7 +277,19 @@
     }
   }
 });
+game.addEventListener("pointerdown", function(event) {
+  if (event.target.closest("#restart")) return;
 
+  if (!gameStarted) {
+    startGame();
+  } 
+  else if (gameRunning) {
+    velocity = jump;
+  } 
+  else {
+    restartGame();
+  }
+});
     function createPipes() {
       let topHeight = Math.floor(Math.random() * 180) + 50;
       let gap = 150;
